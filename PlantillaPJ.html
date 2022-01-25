@@ -1,0 +1,162 @@
+<form class="{{cssClass}}" autocomplete="off" id="sheet">
+    {{!-- Sheet Header --}}
+    <header class="sheet-header">
+        <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="100" width="100">
+        <div class="header-fields">
+            <h1 class="charname"><input name="name" type="text" value="{{actor.name}}" placeholder="Name"></h1>
+            <div class="flexblock-left ">
+                <div class="col-1-2">
+                    {{#if actor.data.istemplate}}
+                    {{else}}
+                    <div class="flexblock-left">
+                        <label class="label-free boldtext">MOD</label>
+                        <input class="input-min" type="text" name="data.mod" value="{{data.mod}}">
+
+                        {{#advShow}}
+                        <a class="roll-mode boldtext" title="Roll mode"><i>{{data.rollmode}}</i></a>
+                        {{/advShow}}
+
+                        {{#showRoller}}
+                        <a class="roll-free" title="Roll mode"><i class="fas fa-dice-d20"></i></a>
+                        {{/showRoller}}
+
+                        {{#if actor.data.selector}}
+                        <a class="mod-selector" title="Select Options"><i class="fas fa-exclamation-circle fa-2x"></i></a>
+                        {{/if}}
+                    </div>
+                    {{/if}}
+                </div>
+
+                <div class="rightblock">
+                    {{#if actor.data.istemplate}}
+                    {{else}}
+                    {{#isGM}}
+                    <select class="selectsheet" name="data.gtemplate" data-type="String">
+                        <!--
+{{#select actor.data.gtemplate}}
+{{#each data.sheets as |gtemplate id|}}
+<option  value="{{gtemplate}}">{{gtemplate}}</option>
+{{/each}}
+{{/select}}
+-->
+                    </select>
+                    {{/isGM}}
+                    {{/if}}
+                    {{#isGM}}
+
+
+                    <h3 class="rightblock-element">Template</h3>
+                    <input class="check-istemplate" name="data.istemplate" id="check-istemplate" type="checkbox" {{checked actor.data.istemplate}}="">
+
+
+                    {{/isGM}}
+
+                    {{#if actor.data.istemplate}}
+                    <h3 class="rightblock-element-tag">Rebuild Sheet</h3>
+                    <a class="rightblock-element item-refresh" title="Rebuild Sheet"><i class="fas fa-sync"></i></a>
+                    {{/if}}
+                </div>
+            </div>
+        </div>
+    </header>
+
+    {{!-- Sheet Tab Navigation --}}
+    <div class="atabs">
+        <a class="tab-prev" id="tab-prev">❮</a>
+        <nav class="sheet-tabs tabs" data-group="primary" id="tabs" tabs="1">
+
+            <a class="item tab-button" data-tab="description" id="tab-0">Bio</a>          
+            <a class="item tab-button" id="tab-1" data-tab="stats_tab">Características</a><a style="display: none" id="tab-last"></a>
+            {{#isGM}}
+            <a class="item tab-button" data-tab="citems" id="tab-citems">cItems</a>
+            {{#if actor.data.istemplate}}
+            <a class="item tab-button" data-tab="token" id="tab-token">Token</a>
+            <a class="item tab-button" data-tab="config" id="tab-tabs">Tabs</a>
+            {{/if}}
+            {{/isGM}}
+
+        </nav>
+        <a class="tab-next" id="tab-next">❯</a>
+    </div>
+
+    {{!-- Sheet Body --}}
+    <section class="sheet-body" id="sheet-body">
+
+        {{!-- Biography Tab --}}
+        <div class="tab biography active scrollable" data-group="primary" data-tab="description">
+            {{editor content=data.biography target="data.biography" button=true owner=owner editable=editable}}
+        </div>
+
+        {{#if actor.data.istemplate}}
+        {{!-- SheetTabs Tab --}}
+        <div class="tab properties" data-group="primary" data-tab="config">
+            <ol class="properties-list">
+                {{#each data.tabs as |tab id|}}
+                <li class="property flexrow" data-item-id="{{id}}">
+                    <h4 class="property-name">{{tab.name}}</h4>
+                    <div class="property-row">
+                        <a class="property-controls item-top" title="Top Item"><i class="fas fa-arrow-alt-circle-up"></i></a>
+                        <a class="property-controls item-bottom" title="Bottom Item"><i class="fas fa-arrow-alt-circle-down"></i></a>
+                        <a class="property-control item-edit" title="Edit Tab"><i class="fas fa-edit"></i></a>
+                        <a class="property-control item-delete" title="Delete Tab"><i class="fas fa-trash"></i></a>
+                    </div>
+                </li>
+                {{/each}}
+            </ol>
+        </div>
+        {{!-- Token Tab --}}
+        <div class="tab token scrollable" data-group="primary" data-tab="token">
+            <div class="flexblock">
+                <div class="col-1-2">
+                    <div class="new-row">
+                        <div class="flexblock-left">
+                            <label class="label-medlarge">Bar 1</label>
+                            <input class="token-bar1" type="text" name="data.tokenbar1" value="{{data.tokenbar1}}" tkvalue="">
+                        </div>
+                    </div>
+                    <div class="new-row">
+                        <div class="flexblock-left">
+                            <label class="label-medlarge">Shield Stat</label>
+                            <input class="token-shieldstat" type="text" name="data.shieldstat" value="{{data.shieldstat}}" tkvalue="">
+                        </div>
+                    </div>
+                    <div class="new-row">
+                        <div class="flexblock-left">
+                            <label class="label-medlarge">Display Name</label>
+                            <select class="token-displayName" name="data.displayName" data-type="String" tkvalue="NONE">
+                                {{#select actor.data.displayName}}
+                                <option value="NONE">NONE</option>
+                                <option value="CONTROL">CONTROL</option>
+                                <option value="OWNER_HOVER">OWNER HOVER</option>
+                                <option value="HOVER">HOVER</option>
+                                <option value="OWNER">OWNER</option>
+                                <option value="ALWAYS">ALWAYS</option>
+                                {{/select}}
+                            </select>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        {{/if}}
+
+        {{!-- cItems Tab --}}
+        <div class="tab citems scrollable" data-group="primary" data-tab="citems">
+            <ol class="properties-list">
+                {{#each data.citems as |citem cid|}}
+                <li class="property flexrow" data-item-id="{{cid}}">
+                    <h4 class="property-name">{{citem.name}}</h4>
+                    <div class="property-row">
+                        <a class="property-control citem-edit" title="Edit cItem"><i class="fas fa-edit"></i></a>
+                        <a class="property-control citem-delete" citemid="{{citem.id}}" title="Delete cItem"><i class="fas fa-trash"></i></a>
+                    </div>
+                </li>
+                {{/each}}
+            </ol>
+        </div>
+
+
+
+    <div class="tab scrollable stats_tab_tab" id="stats_tab_Def" data-group="primary" data-tab="stats_tab"><div class="new-column" id="stats_tabBody"><div class="new-block" id="stats_tabrow0"><div class="col-1-1"><div class="panelheader">Concepto</div><div class="new-row"><div class="flexblock-left"><h3 class=" label-small boldtext" id="prop_concepto" attid="LOTdkSbdfnNuWeQE">Concepto</h3><input name="data.attributes.prop_concepto.value" value="{{data.attributes.prop_concepto.value}}" type="text" class="input-free prop_concepto" attid="LOTdkSbdfnNuWeQE"></div></div></div></div><div class="new-block" id="stats_tabrow1"><div class="col-1-3"><div class="panelheader">Características</div><div class="new-row"><div class="flexblock-left"><h3 class=" label-small boldtext" id="prop_fort" attid="8Dhla154AQpIde43">Fortaleza</h3><div class="radio-input prop_fort" name="prop_fort" attid="8Dhla154AQpIde43"></div><h3 class=" label-free rollable" id="prop_tirfort" attid="Epc8h6XXcaa41cGv"><div title="Tiirada Fortaleza"><i class="fas fa-dice-d20"></i></div></h3></div><div class="flexblock-left"><h3 class=" label-small boldtext" id="prop_ref" attid="WCoMnUOrkdC01ZaY">Reflejos</h3><div class="radio-input prop_ref" name="prop_ref" attid="WCoMnUOrkdC01ZaY"></div><h3 class=" label-free rollable" id="prop_tirref" attid="HWCVaJwzDcD2b44k"><div title=""><i class="fas fa-dice-d20"></i></div></h3></div><div class="flexblock-left"><h3 class=" label-small boldtext" id="prop_vol" attid="wh7MD6akhm752mDH">Voluntad</h3><div class="radio-input prop_vol" name="prop_vol" attid="wh7MD6akhm752mDH"></div><h3 class=" label-free rollable" id="prop_tirvol" attid="SGiaf1OQAP9aKsTU"><div title=""><i class="fas fa-dice-d20"></i></div></h3></div><div class="flexblock-left"><h3 class=" label-small boldtext" id="prop_int" attid="QlG22UFifASs1fbW">Intelecto</h3><div class="radio-input prop_int" name="prop_int" attid="QlG22UFifASs1fbW"></div><h3 class=" label-free rollable" id="prop_tirint" attid="tTUloYyvelXnDSly"><div title=""><i class="fas fa-dice-d20"></i></div></h3></div></div></div><div class="col-1-6"><div class="panelheader">Tensión</div><div class="new-row"><div class="flexblock-left"><div class="radio-input prop_punttenfort" name="prop_punttenfort" attid="8mbBtljINiKmgctM"></div><h3 class=" label-free rollable" id="prop_tirtenfort" attid="rRBo5zqvr9I1aOyL"><div title=""><i class="fas fa-dice-d20"></i></div></h3></div><div class="flexblock-left"><div class="radio-input prop_punttenref" name="prop_punttenref" attid="kae5L9G1KrrOzVtC"></div><h3 class=" label-free rollable" id="prop_tirtenref" attid="a50v4dNxVlVBJypV"><div title=""><i class="fas fa-dice-d20"></i></div></h3></div><div class="flexblock-left"><div class="radio-input prop_punttenvol" name="prop_punttenvol" attid="Pa3xegEfBVAfxOwh"></div><h3 class=" label-free rollable" id="prop_tirtenvol" attid="ZKnn7bdKvw0KFlMp"><div title=""><i class="fas fa-dice-d20"></i></div></h3></div><div class="flexblock-left"><div class="radio-input prop_punttenint" name="prop_punttenint" attid="nxce6H9e8gv3aguv"></div><h3 class=" label-free rollable" id="prop_tirtenint" attid="zN1EUjobQ96gFGmd"><div title=""><i class="fas fa-dice-d20"></i></div></h3></div></div></div><div class="col-1-2"><div class="panelheader">Rasgos</div><div class="new-row"><div class="flexblock-left"><input name="data.attributes.prop_rasgfort.value" value="{{data.attributes.prop_rasgfort.value}}" type="text" class="input-free prop_rasgfort" attid="WHWGufB6i5y6UEVe"></div><div class="flexblock-left"><input name="data.attributes.prop_rasgref.value" value="{{data.attributes.prop_rasgref.value}}" type="text" class="input-free prop_rasgref" attid="GajEawAjGOX1NdD8"></div><div class="flexblock-left"><input name="data.attributes.prop_rasgint.value" value="{{data.attributes.prop_rasgint.value}}" type="text" class="input-free prop_rasgint" attid="ZqUeq04NharFBom9"></div><div class="flexblock-left"><input name="data.attributes.prop_rasgvol.value" value="{{data.attributes.prop_rasgvol.value}}" type="text" class="input-free prop_rasgvol" attid="o59DoCePdbElTl7O"></div></div></div></div><div class="new-block" id="stats_tabrow2"><div class="col-1-2"><div class="panelheader">Hitos</div><div class="new-row"><div class="flexblock-left"><input name="data.attributes.prop_hito1.value" value="{{data.attributes.prop_hito1.value}}" type="text" class="input-free prop_hito1" attid="ZQnv9B6ctXGZvCIU"></div><div class="flexblock-left"><input name="data.attributes.prop_hito2.value" value="{{data.attributes.prop_hito2.value}}" type="text" class="input-free prop_hito2" attid="C2Bdp0SF8Lscln4P"></div><div class="flexblock-left"><input name="data.attributes.prop_hito3.value" value="{{data.attributes.prop_hito3.value}}" type="text" class="input-free prop_hito3" attid="Rvt7CAdwuwyP1rAl"></div><div class="flexblock-left"><input name="data.attributes.prop_hito4.value" value="{{data.attributes.prop_hito4.value}}" type="text" class="input-free prop_hito4" attid="EAnvaTIafRlttOny"></div></div></div><div class="col-1-2"><div class="panelheader">Complicaciones</div><div class="new-row"><div class="flexblock-left"><input name="data.attributes.prop_complicaciones.value" value="{{data.attributes.prop_complicaciones.value}}" type="text" class="input-free prop_complicaciones" attid="yvXUpBeW2EhglLOj"></div></div></div></div><div class="new-block" id="stats_tabrow3"><div class="col-1-3"><div class="panelheader">Puntuaciones de Combate</div><div class="new-row"><div class="flexblock-left"><div class="badge-block centertext prop_inic inputGM" name="prop_inic" attid="JTAAkSRaMc57Qd0Q"><label class="boldtext">INI</label><div class="badge-container"><a class="badge-image"><i class="badge-click" attkey="prop_inic" attid="JTAAkSRaMc57Qd0Q"></i></a><a attkey="prop_inic" attid="JTAAkSRaMc57Qd0Q" class="badge-clickgm"><i class="fas fa-plus-circle"></i></a></div></div><input name="data.attributes.prop_puntini.value" value="{{data.attributes.prop_puntini.value}}" type="text" class="input-min input-disabled prop_puntini inputGM" readonly="true" attid="p8rkTs2FFlyat9ac" style="display: none;"><div class="badge-block centertext prop_def" name="prop_def" attid="OY1ejkYja1k6UHvO"><label class="boldtext">DEF</label><div class="badge-container"><a class="badge-image"><i class="badge-click" attkey="prop_def" attid="OY1ejkYja1k6UHvO"></i></a><a attkey="prop_def" attid="OY1ejkYja1k6UHvO" class="badge-clickgm"><i class="fas fa-plus-circle"></i></a></div></div><input name="data.attributes.prop_puntdef.value" value="{{data.attributes.prop_puntdef.value}}" type="text" class="input-min input-disabled prop_puntdef inputGM" readonly="true" attid="4VYdpIRXWyFTbMRr" style="display: none;"><div class="badge-block centertext prop_prot inputGM" name="prop_prot" attid="L6AQo6oiaFVBHey5"><label class="boldtext">PROT</label><div class="badge-container"><a class="badge-image"><i class="badge-click" attkey="prop_prot" attid="L6AQo6oiaFVBHey5"></i></a><a attkey="prop_prot" attid="L6AQo6oiaFVBHey5" class="badge-clickgm"><i class="fas fa-plus-circle"></i></a></div></div><input name="data.attributes.prop_puntprot.value" value="{{data.attributes.prop_puntprot.value}}" type="text" class="input-min input-disabled prop_puntprot inputGM" readonly="true" attid="wP7UtOqtlMJY9Na8" style="display: none;"><div class="badge-block centertext prop_agu inputGM" name="prop_agu" attid="3qOvVTS17vWlr9sj"><label class="boldtext">AGU</label><div class="badge-container"><a class="badge-image"><i class="badge-click" attkey="prop_agu" attid="3qOvVTS17vWlr9sj"></i></a><a attkey="prop_agu" attid="3qOvVTS17vWlr9sj" class="badge-clickgm"><i class="fas fa-plus-circle"></i></a></div></div><input name="data.attributes.prop_puntagu.value" value="{{data.attributes.prop_puntagu.value}}" type="text" class="input-min input-disabled prop_puntagu inputGM" readonly="true" attid="JHUjnu5hv6NSMyeB" style="display: none;"></div></div></div><div class="col-1-3"><div class="panelheader">Puntuaciones de Salud</div><div class="new-row"><div class="flexblock-left"><h3 class=" label-med boldtext" id="prop_resistencia" attid="YcwHDSazt62WuhJi">Resistencia</h3><div class="radio-input prop_resistencia" name="prop_resistencia" attid="YcwHDSazt62WuhJi"></div></div></div></div><div class="col-1-3"><div class="panelheader">Moral</div><div class="new-row"><div class="flexblock-left"><div class="badge-block centertext prop_conc" name="prop_conc" attid="49lPyaSr57Yvc9nf"><label class="boldtext">CONC</label><div class="badge-container"><a class="badge-image"><i class="badge-click" attkey="prop_conc" attid="49lPyaSr57Yvc9nf"></i></a><a attkey="prop_conc" attid="49lPyaSr57Yvc9nf" class="badge-clickgm"><i class="fas fa-plus-circle"></i></a></div></div><h3 class=" label-free" id="prop_puntconc" attid="KZi4mfnxThiaUcKq" style="display: none;"></h3><input name="data.attributes.prop_puntconc.value" value="{{data.attributes.prop_puntconc.value}}" type="text" class="input-min input-disabled prop_puntconc" readonly="true" attid="KZi4mfnxThiaUcKq" style="display: none;"><div class="badge-block centertext prop_sup" name="prop_sup" attid="KiF9Oiln98KM424U"><label class="boldtext">SUP</label><div class="badge-container"><a class="badge-image"><i class="badge-click" attkey="prop_sup" attid="KiF9Oiln98KM424U"></i></a><a attkey="prop_sup" attid="KiF9Oiln98KM424U" class="badge-clickgm"><i class="fas fa-plus-circle"></i></a></div></div><div class="badge-block centertext prop_inst" name="prop_inst" attid="Mpy3SRWlCztie6tJ"><label class="boldtext">INST</label><div class="badge-container"><a class="badge-image"><i class="badge-click" attkey="prop_inst" attid="Mpy3SRWlCztie6tJ"></i></a><a attkey="prop_inst" attid="Mpy3SRWlCztie6tJ" class="badge-clickgm"><i class="fas fa-plus-circle"></i></a></div></div></div></div></div></div><div class="new-block" id="stats_tabrow4"><div class="col-1-3"><div class="panelheader">Aspectos Temporales</div><div class="new-row"><div class="flexblock-left"><textarea class="texteditor-med prop_aspecttemp" name="data.attributes.prop_aspecttemp.value" attid="lb5txXUlcIIehxUq">{{data.attributes.prop_aspecttemp.value}}</textarea></div></div></div><div class="col-1-3"><div class="panelheader">Posesiones</div><div class="new-row"><div class="flexblock-left"><textarea class="texteditor-med prop_pose" name="data.attributes.prop_pose.value" attid="aiWlO6NTioBbJKcf">{{data.attributes.prop_pose.value}}</textarea></div></div></div><div class="col-1-3"><div class="panelheader">Salud</div><div class="new-row"><div class="flexblock-left"><h3 class=" label-small boldtext" id="prop_sano" attid="OP5ZG2E0o4NmHP7J">Sano</h3><input class="input-small prop_sano" name="data.attributes.prop_sano.value" type="checkbox" {{checked actor.data.attributes.prop_sano.value}} attid="OP5ZG2E0o4NmHP7J"></div><div class="flexblock-left"><h3 class=" label-small boldtext" id="prop_magu" attid="9RpZHZwd8sVOixFU">Magullado</h3><input class="input-small prop_magu" name="data.attributes.prop_magu.value" type="checkbox" {{checked actor.data.attributes.prop_magu.value}} attid="9RpZHZwd8sVOixFU"></div><div class="flexblock-left"><h3 class=" label-small boldtext" id="prop_heri" attid="kNLqTzUBLF9ki7Ab">Herido</h3><input class="input-small prop_heri" name="data.attributes.prop_heri.value" type="checkbox" {{checked actor.data.attributes.prop_heri.value}} attid="kNLqTzUBLF9ki7Ab"></div><div class="flexblock-left"><h3 class=" label-small boldtext" id="prop_malh" attid="5S59yPTTRLWlGtIZ">Malherido</h3><input class="input-small prop_malh" name="data.attributes.prop_malh.value" type="checkbox" {{checked actor.data.attributes.prop_malh.value}} attid="5S59yPTTRLWlGtIZ"></div><div class="flexblock-left"><h3 class=" label-small boldtext" id="prop_mori" attid="26Fl6OT54imLJYSs">Moribundo</h3><input class="input-small prop_mori" name="data.attributes.prop_mori.value" type="checkbox" {{checked actor.data.attributes.prop_mori.value}} attid="26Fl6OT54imLJYSs"></div></div></div></div></div></div></section>
+</form>

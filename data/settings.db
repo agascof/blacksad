@@ -1,0 +1,16 @@
+{"_id":"59ZQ3g6EtqijBgY9","key":"sandbox.diff","value":"\"2\""}
+{"key":"core.time","value":"0","_id":"5PdvZLYaraqdH2Bq"}
+{"key":"narrator-tools.WebFont","value":"\"\"","_id":"5l0lTkSEidBW9ESy"}
+{"_id":"6Phf7zNIyNZECE1V","key":"core.rtcWorldSettings","value":"{\"mode\":3,\"server\":{\"type\":\"FVTT\",\"url\":\"\",\"room\":\"xdgvd4fdrqsx254db46por1m55llhi8e\",\"username\":\"\",\"password\":\"\"},\"turn\":{\"type\":\"server\",\"url\":\"\",\"username\":\"\",\"password\":\"\"}}"}
+{"key":"core.combatTrackerConfig","value":"{\"resource\":\"\",\"skipDefeated\":true}","_id":"8BKZ4sjyGxABhDfB"}
+{"key":"dice-so-nice.formatVersion","value":"\"4.1\"","_id":"9c3kXTFs2WdCkVoh"}
+{"key":"cursor-hider.minimumPermission","value":"\"1\"","_id":"9cusHbIPxRoyEl2M"}
+{"key":"sandbox.showADV","value":"false","_id":"Bb40w2rvRWEh6mau"}
+{"key":"jitsirtc.allowExternalUsers","value":"true","_id":"EQdAoaXzjcC4hIAs"}
+{"key":"narrator-tools.FontSize","value":"\"\"","_id":"ROzzdqRMrdL1lmzg"}
+{"_id":"S8zRqSPF8SXvFFez","key":"core.permissions","value":"{\"WALL_DOORS\":[1,2,3,4],\"TOKEN_CONFIGURE\":[2,3,4],\"JOURNAL_CREATE\":[2,3,4],\"TOKEN_CREATE\":[3,4],\"ITEM_CREATE\":[3,4],\"ACTOR_CREATE\":[3,4],\"TEMPLATE_CREATE\":[1,2,3,4],\"SETTINGS_MODIFY\":[3,4],\"SHOW_CURSOR\":[2,3],\"SHOW_RULER\":[1,2,3,4],\"FILES_BROWSE\":[2,3,4],\"BROADCAST_AUDIO\":[1,2,3,4],\"BROADCAST_VIDEO\":[1,2,3,4],\"FILES_UPLOAD\":[3,4],\"MESSAGE_WHISPER\":[1,2,3,4],\"DRAWING_CREATE\":[2,3,4],\"MACRO_SCRIPT\":[1,2,3,4],\"NOTE_CREATE\":[2,3,4]}"}
+{"_id":"TQgVagDpZuvOsIo2","key":"sandbox.customStyle","value":"\"C:\\\\Alvaro\\\\Rol\\\\Blacksad\\\\Foundry\\\\style.css\""}
+{"key":"sandbox.showSimpleRoller","value":"false","_id":"llYTQ8ZeXVvFIdGy"}
+{"_id":"oM1SQ5cuuyLLaNlk","key":"core.moduleConfiguration","value":"{\"compendios-llc-es-basicos\":false,\"adventuremusic\":false,\"babele\":false,\"combat-carousel\":false,\"combat-utility-belt\":false,\"compendium-folders\":false,\"custom-journal\":false,\"dice-so-nice\":true,\"dice-calculator\":true,\"falemos\":false,\"find-the-culprit\":false,\"gm-notes\":false,\"graham-plowmans-music-pack\":false,\"inlinewebviewer\":false,\"ivan-duch-music-packs\":false,\"jitsirtc\":false,\"journal-links\":false,\"journal-scaler\":false,\"colorsettings\":false,\"_document-sheet-registrar\":false,\"lib-captions\":false,\"lib-wrapper\":false,\"monks-enhanced-journal\":false,\"monks-scene-navigation\":false,\"music-assist\":false,\"narrator-tools\":false,\"one-journal\":false,\"pdfoundry\":false,\"playlist_import\":false,\"popout\":true,\"selectiveshow\":false,\"socketlib\":false,\"SoundBoard\":false,\"SoundBoard-BlitzFreePack\":false,\"soundfxlibrary\":false,\"special-dice-roller\":false,\"stream-view\":false,\"FoundryVTT-ES\":false,\"tweakplaylist\":false,\"zoom-pan-options\":false}"}
+{"_id":"sgfOD6RHh6hYH5ZI","key":"Whetstone.addMenuButton","value":"true"}
+{"key":"pdfoundry.DataVersion","value":"\"v0.6.0\"","_id":"yM8t1o8Y1fU01e47"}

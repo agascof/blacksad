@@ -1,0 +1,20 @@
+{"_id":"1mIVPL9xK3fuNAT3","name":"_Tabs","type":"Item","sort":null,"flags":{},"parent":"rECiWF299SOi0uuz","color":"#ff8080"}
+{"name":"_Paneles","type":"Item","sort":null,"flags":{},"parent":"rECiWF299SOi0uuz","color":"#ff8080","_id":"2yOmi3NUsou3293u"}
+{"name":"_Propiedades_Grupos","type":"Item","sort":400000,"flags":{},"parent":"doMqPGd2oZJk6eKK","color":"#008000","_id":"Du5ceqlIQLyFrtvr"}
+{"name":"_Puntuaciones de Combate","type":"Item","sort":1100000,"flags":{},"parent":"sCMFjqn3CQ9qCdeZ","color":"#ff8080","_id":"E56UxdoI296BbwKE"}
+{"_id":"G5anStmAplFyvgyk","name":"_Grupos","type":"Item","sort":300000,"flags":{},"parent":"doMqPGd2oZJk6eKK","color":"#008000"}
+{"_id":"KA8MlOrrzCgZX5KH","name":"_Rasgos","type":"Item","sort":900000,"flags":{},"parent":"sCMFjqn3CQ9qCdeZ","color":"#ff8080"}
+{"name":"_Posesiones","type":"Item","sort":1400000,"flags":{},"parent":"sCMFjqn3CQ9qCdeZ","color":"#ff8080","_id":"KAtLmXrOls2cnILu"}
+{"name":"_Plantillas","type":"Actor","sort":null,"flags":{},"parent":null,"color":"#ff0000","_id":"KuSI9yKU8xMmPU1e"}
+{"_id":"doMqPGd2oZJk6eKK","name":"_Configuracion","type":"Item","sort":200000,"flags":{},"parent":"w2XUMviQsnR36FJt","color":"#008000"}
+{"name":"_Características","type":"Item","sort":600000,"flags":{},"parent":"sCMFjqn3CQ9qCdeZ","color":"#ff8080","_id":"fweZwktQ3wFaUEY0"}
+{"_id":"haLRanQjBXe3qxiv","name":"_Puntuaciones de Salud","type":"Item","sort":1150000,"flags":{},"parent":"sCMFjqn3CQ9qCdeZ","color":"#ff8080"}
+{"name":"_cItems","type":"Item","sort":500000,"flags":{},"parent":"w2XUMviQsnR36FJt","color":"#008000","_id":"k0Sqf0m6iZj8iYrN"}
+{"name":"_Hitos&Complicaciones","type":"Item","sort":1000000,"flags":{},"parent":"sCMFjqn3CQ9qCdeZ","color":"#ff8080","_id":"kvhZ8BKwTWyQgARC"}
+{"name":"_TiradasConTension","type":"Item","sort":800000,"flags":{},"parent":"sCMFjqn3CQ9qCdeZ","color":"#ff8080","_id":"kzqjM8oEzwcJkIBT"}
+{"name":"_TiradasSinTension","type":"Item","sort":700000,"flags":{},"parent":"sCMFjqn3CQ9qCdeZ","color":"#ff8080","_id":"lQsmyBt5hpti2oyE"}
+{"name":"_Plantilla","type":"Item","sort":null,"flags":{},"parent":null,"color":"#ff8080","_id":"rECiWF299SOi0uuz"}
+{"name":"_Propiedades","type":"Item","sort":100000,"flags":{},"parent":"rECiWF299SOi0uuz","color":"#ff8080","_id":"sCMFjqn3CQ9qCdeZ"}
+{"_id":"w2XUMviQsnR36FJt","name":"_Compendio","type":"Item","sort":null,"flags":{},"parent":null,"color":"#008000"}
+{"name":"_Salud","type":"Item","sort":1300000,"flags":{},"parent":"sCMFjqn3CQ9qCdeZ","color":"#ff8080","_id":"ycHlZvMwDrleyj1D"}
+{"_id":"zybd2OyMq2zaMcol","name":"_Puntuaciones de Moral","type":"Item","sort":1200000,"flags":{},"parent":"sCMFjqn3CQ9qCdeZ","color":"#ff8080"}
